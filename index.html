@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickArt Studio | Generador de Mosaicos Reales</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <header>
+                <h1>BrickArt <span>Pro</span></h1>
+                <p>Convierte fotos en planos de construcción.</p>
+            </header>
+
+            <div class="controls">
+                <label class="upload-area">
+                    <span>📁 Subir Imagen</span>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                </label>
+
+                <div class="control-group">
+                    <label>Resolución (Studs)</label>
+                    <select id="gridSize">
+                        <option value="16">16 x 16 (Small)</option>
+                        <option value="32" selected>32 x 32 (Medium)</option>
+                        <option value="48">48 x 48 (Large)</option>
+                        <option value="64">64 x 64 (XL)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <h3>Ajustes de Imagen</h3>
+                    <label>Brillo</label>
+                    <input type="range" id="brightness" min="-50" max="50" value="0">
+                    <label>Contraste</label>
+                    <input type="range" id="contrast" min="-50" max="50" value="0">
+                </div>
+
+                <div class="control-group">
+                    <div class="toggle-control">
+                        <input type="checkbox" id="buildMode">
+                        <label for="buildMode">Activar Build Mode (IDs)</label>
+                    </div>
+                </div>
+
+                <button id="generateBtn" class="btn-primary">Generar Mosaico</button>
+                <button id="downloadBtn" class="btn-secondary" disabled>Exportar PNG</button>
+            </div>
+        </aside>
+
+        <main class="viewport">
+            <div id="canvasContainer" class="canvas-container">
+                <canvas id="mainCanvas"></canvas>
+            </div>
+
+            <section id="inventory" class="inventory hidden">
+                <h2>Lista de Piezas (Inventory)</h2>
+                <div id="pieceList" class="piece-list"></div>
+                <div class="total-summary">Total de piezas: <span id="totalCount">0</span></div>
+            </section>
+        </main>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
